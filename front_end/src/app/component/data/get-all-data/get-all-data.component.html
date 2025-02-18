@@ -1,0 +1,21 @@
+<h2>Liste des données</h2>
+
+<!-- Bouton Ajouter en haut -->
+<button routerLink="/ajouter" class="btn btn-primary">Ajouter</button>
+
+<p *ngIf="isLoading">Chargement des données...</p>
+
+<p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+<ul *ngIf="!errorMessage && dataList.length > 0">
+  <li *ngFor="let item of dataList">
+    {{ item.id }} - {{ item.name }} : {{ item.value }}
+    <!-- Boutons Modifier et Supprimer pour chaque item -->
+    <button class="btn btn-warning">Modifier</button>
+    <button  class="btn btn-danger">Supprimer</button>
+  </li>
+</ul>
+
+<p *ngIf="!isLoading && dataList.length === 0 && !errorMessage">
+  Aucune donnée disponible.
+</p>
